@@ -1,0 +1,115 @@
+@use "../utils/vars";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-size: 100%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  vertical-align: baseline;
+}
+
+::selection {
+  background-color: vars.$clr-selection-bg;
+  color: vars.$clr-selection-txt;
+}
+:focus-visible {
+  outline: dashed 2px vars.$clr-selection-bg;
+}
+
+html {
+  height: 100%;
+  display: block;
+  background-color: vars.$clr-base;
+  color: vars.$clr-txt-secondary;
+  font-size: 16px;
+}
+body {
+  height: 100%;
+  display: block;
+  background-color: vars.$clr-base;
+  color: vars.$clr-txt-secondary;
+}
+main {
+  height: 100%;
+  display: block;
+  position: relative;
+}
+section,
+article,
+div {
+  display: block;
+}
+ul,
+ol,
+li {
+  display: block;
+  list-style-type: none;
+}
+
+// links
+@mixin link--default {
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  font-size: 1em;
+  font-family: vars.$font-primary;
+  font-weight: vars.$font-w-primary;
+  
+  @include respond-to("SMALL") {
+    font-size: 1.1em;
+  }
+}
+
+// buttons
+@mixin btn--default {
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: vars.$font-primary;
+  font-weight: vars.$font-w-primary;
+  background-color: vars.$clr-secondary;
+  color: vars.$clr-txt-secondary;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @include respond-to("SMALL") {
+    font-size: 1.1em;
+  }
+}
+
+@mixin input--default {
+  border: none;
+  font-size: 1em;
+  font-family: vars.$font-primary;
+  font-weight: vars.$font-w-primary;
+  background-color: vars.$clr-secondary;
+  color: vars.$clr-txt-secondary;
+
+  @include respond-to("SMALL") {
+    font-size: 1.1em;
+  }
+}
+
+@mixin textarea--default {
+  resize: none;
+  border: none;
+  font-size: 1em;
+  font-family: vars.$font-primary;
+  font-weight: vars.$font-w-primary;
+  background-color: vars.$clr-secondary;
+  color: vars.$clr-txt-secondary;
+
+  @include respond-to("SMALL") {
+    font-size: 1.1em;
+  }
+}

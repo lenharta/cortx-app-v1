@@ -1,0 +1,100 @@
+@use "./vars";
+@use "../base/functions";
+
+@mixin flex--center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex--between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin flex--start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+@mixin flex--end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@mixin grid--col-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@mixin grid--col-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+@mixin grid--col-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@mixin grid--col-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+// containers
+@mixin global--container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: calc(vars.$grid-gutter * 0.25);
+  padding-right: calc(vars.$grid-gutter * 0.25);
+  max-width: vars.$max-layout-width;
+
+  @include respond-to("SMALL") {
+    padding-left: calc(vars.$grid-gutter * 0.5);
+    padding-right: calc(vars.$grid-gutter * 0.5);
+  }
+  @include respond-to("MEDIUM") {
+    padding-left: vars.$grid-gutter;
+    padding-right: vars.$grid-gutter;
+  }
+  @include respond-to("LARGE") {
+    padding-left: calc(vars.$grid-gutter * 1.5);
+    padding-right: calc(vars.$grid-gutter * 1.5);
+  }
+  @include respond-to("LARGE") {
+    padding-left: calc(vars.$grid-gutter * 2);
+    padding-right: calc(vars.$grid-gutter * 2);
+  }
+}
+
+@mixin section--card {
+  background-color: vars.$clr-secondary;
+  border-radius: calc(vars.$card-radius * 0.5);
+  padding-left: calc(vars.$grid-gutter * 0.125);
+  padding-right: calc(vars.$grid-gutter * 0.125);
+  margin-bottom: calc(vars.$grid-gutter * 0.125);
+  margin-top: calc(vars.$grid-gutter * 0.125);
+
+  @include respond-to("SMALL") {
+    padding-left: calc(vars.$grid-gutter * 0.25);
+    padding-right: calc(vars.$grid-gutter * 0.25);
+    margin-bottom: calc(vars.$grid-gutter * 0.25);
+    margin-top: calc(vars.$grid-gutter * 0.25);
+  }
+  @include respond-to("MEDIUM") {
+    padding-left: calc(vars.$grid-gutter * 0.5);
+    padding-right: calc(vars.$grid-gutter * 0.5);
+    margin-bottom: calc(vars.$grid-gutter * 0.5);
+    margin-top: calc(vars.$grid-gutter * 0.5);
+  }
+  @include respond-to("LARGE") {
+    padding-left: calc(vars.$grid-gutter * 0.75);
+    padding-right: calc(vars.$grid-gutter * 0.75);
+    margin-bottom: calc(vars.$grid-gutter * 0.75);
+    margin-top: calc(vars.$grid-gutter * 0.75);
+  }
+  @include respond-to("LARGE") {
+    padding-left: vars.$grid-gutter;
+    padding-right: vars.$grid-gutter;
+    margin-bottom: vars.$grid-gutter;
+    margin-top: vars.$grid-gutter;
+  }
+}

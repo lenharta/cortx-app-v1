@@ -1,0 +1,17 @@
+@use "../utils/vars";
+
+.AddNewTodo {
+  right: 2rem;
+  bottom: 2rem;
+  position: fixed;
+  height: 3rem;
+  width: 3rem;
+
+  border-radius: 50%;
+
+  svg {
+    height: 3rem;
+    width: 3rem;
+    color: vars.$clr-acc-green;
+  }
+}
