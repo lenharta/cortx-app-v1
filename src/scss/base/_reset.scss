@@ -1,4 +1,5 @@
 @use "../utils/vars";
+@import "./functions";
 
 *,
 *::before,
@@ -50,26 +51,21 @@ li {
   list-style-type: none;
 }
 
-// links
-@mixin link--default {
+a {
   cursor: pointer;
   text-decoration: none;
 
-  &:hover {
-    opacity: 0.8;
-  }
-
   font-size: 1em;
   font-family: vars.$font-primary;
   font-weight: vars.$font-w-primary;
-  
+  color: vars.$clr-txt-secondary;
+
   @include respond-to("SMALL") {
     font-size: 1.1em;
   }
 }
 
-// buttons
-@mixin btn--default {
+button {
   border: none;
   cursor: pointer;
   font-size: 1em;
@@ -87,7 +83,7 @@ li {
   }
 }
 
-@mixin input--default {
+input[type="text"] {
   border: none;
   font-size: 1em;
   font-family: vars.$font-primary;
@@ -100,7 +96,7 @@ li {
   }
 }
 
-@mixin textarea--default {
+textarea {
   resize: none;
   border: none;
   font-size: 1em;

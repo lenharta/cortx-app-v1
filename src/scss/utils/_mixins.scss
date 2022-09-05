@@ -59,42 +59,82 @@
     padding-left: calc(vars.$grid-gutter * 1.5);
     padding-right: calc(vars.$grid-gutter * 1.5);
   }
-  @include respond-to("LARGE") {
+  @include respond-to("XLARGE") {
     padding-left: calc(vars.$grid-gutter * 2);
     padding-right: calc(vars.$grid-gutter * 2);
   }
 }
 
-@mixin section--card {
+@mixin section--card-sm {
   background-color: vars.$clr-secondary;
   border-radius: calc(vars.$card-radius * 0.5);
-  padding-left: calc(vars.$grid-gutter * 0.125);
-  padding-right: calc(vars.$grid-gutter * 0.125);
-  margin-bottom: calc(vars.$grid-gutter * 0.125);
-  margin-top: calc(vars.$grid-gutter * 0.125);
+  padding-left: calc(vars.$spacing-unit * 2);
+  padding-right: calc(vars.$spacing-unit * 2);
+  padding-bottom: calc(vars.$spacing-unit * 2);
+  padding-top: calc(vars.$spacing-unit * 2);
+  margin-bottom: calc(vars.$spacing-unit * 1);
+  margin-top: calc(vars.$spacing-unit * 1);
 
   @include respond-to("SMALL") {
-    padding-left: calc(vars.$grid-gutter * 0.25);
-    padding-right: calc(vars.$grid-gutter * 0.25);
-    margin-bottom: calc(vars.$grid-gutter * 0.25);
-    margin-top: calc(vars.$grid-gutter * 0.25);
+    padding-left: calc(vars.$spacing-unit * 1);
+    padding-right: calc(vars.$spacing-unit * 1);
+    padding-bottom: calc(vars.$spacing-unit * 1);
+    padding-top: calc(vars.$spacing-unit * 1);
+    margin-bottom: calc(vars.$spacing-unit * 1);
+    margin-top: calc(vars.$spacing-unit * 1);
   }
   @include respond-to("MEDIUM") {
-    padding-left: calc(vars.$grid-gutter * 0.5);
-    padding-right: calc(vars.$grid-gutter * 0.5);
-    margin-bottom: calc(vars.$grid-gutter * 0.5);
-    margin-top: calc(vars.$grid-gutter * 0.5);
+    padding-left: calc(vars.$spacing-unit * 1);
+    padding-right: calc(vars.$spacing-unit * 1);
+    padding-bottom: calc(vars.$spacing-unit * 1);
+    padding-top: calc(vars.$spacing-unit * 1);
+    margin-bottom: calc(vars.$spacing-unit * 1);
+    margin-top: calc(vars.$spacing-unit * 1);
   }
   @include respond-to("LARGE") {
-    padding-left: calc(vars.$grid-gutter * 0.75);
-    padding-right: calc(vars.$grid-gutter * 0.75);
-    margin-bottom: calc(vars.$grid-gutter * 0.75);
-    margin-top: calc(vars.$grid-gutter * 0.75);
+    padding-left: calc(vars.$spacing-unit * 1);
+    padding-right: calc(vars.$spacing-unit * 1);
+    padding-bottom: calc(vars.$spacing-unit * 1);
+    padding-top: calc(vars.$spacing-unit * 1);
+    margin-bottom: calc(vars.$spacing-unit * 1);
+    margin-top: calc(vars.$spacing-unit * 1);
   }
-  @include respond-to("LARGE") {
-    padding-left: vars.$grid-gutter;
-    padding-right: vars.$grid-gutter;
-    margin-bottom: vars.$grid-gutter;
-    margin-top: vars.$grid-gutter;
+  @include respond-to("XLARGE") {
+    padding-left: calc(vars.$spacing-unit * 1);
+    padding-right: calc(vars.$spacing-unit * 1);
+    padding-bottom: calc(vars.$spacing-unit * 1);
+    padding-top: calc(vars.$spacing-unit * 1);
+    margin-bottom: calc(vars.$spacing-unit * 1);
+    margin-top: calc(vars.$spacing-unit * 1);
   }
+}
+
+@mixin input--checkbox {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  
+  input {
+    z-index: 2;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    opacity: 0;
+  }
+
+  svg {
+    z-index: 1;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@mixin input--checkbox-complete {
+  @include input--checkbox;
+  color: vars.$clr-acc-green;
+}
+@mixin input--checkbox-incomplete {
+  @include input--checkbox;
+  color: vars.$clr-acc-blue;
 }

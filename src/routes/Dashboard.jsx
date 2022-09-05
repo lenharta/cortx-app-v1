@@ -4,21 +4,18 @@ import { pageTransitionLeft } from "../utils/motionConfig";
 
 const Dashboard = () => {
   return (
-    <div className="dashboard">
-      <MotionRoute animation={pageTransitionLeft}>
-        <header className="dashboard__header">
+    <MotionRoute animation={pageTransitionLeft}>
+      <div className="Dashboard">
+        <header className="Dashboard__header">
           <h1>Dashboard</h1>
         </header>
 
-
-
         {/* CLOCK */}
         {/* COUNTERBOARD */}
-        {/* TODOLIST */}
         <TodoList />
         {/* FOOTER */}
-      </MotionRoute>
-    </div>
+      </div>
+    </MotionRoute>
   );
 };
 export default Dashboard;

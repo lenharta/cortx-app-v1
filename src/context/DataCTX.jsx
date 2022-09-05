@@ -48,7 +48,10 @@ export const DataProvider = ({ children }) => {
     const todoToComplete = { isComplete: isComplete };
 
     try {
-      const res = await axios.patch(`${FIREBASE_URL}/todos/${id}.json`, todoToComplete)
+      const res = await axios.patch(
+        `${FIREBASE_URL}/todos/${id}.json`,
+        todoToComplete
+      );
       return res.data;
     } catch (err) {
       setError(true);
@@ -61,18 +64,33 @@ export const DataProvider = ({ children }) => {
   };
 
   const editTodo = async (initialTodo) => {
-    
-    // setIsLoading(true);
-    // try {
+    console.log(initialTodo);
+    setIsLoading(true);
+    const { id, dateTime, title, description, isComplete } = initialTodo;
+    const todoToEdit = {
+      dateTime: dateTime,
+      description: description,
+      isComplete: isComplete,
+      title: title,
+    };
 
-    // } catch (err) {
-    //   setError(true);
-    //   setErrorMsg("Failed to update Todo Status");
-    //   console.log(err.message);
-    // } finally {
-    //   setIsLoading(false);
-    // }
-  }
+    try {
+      const res = await axios.put(
+        `${FIREBASE_URL}/todos/${id}.json`,
+        todoToEdit
+      );
+      console.log(res);
+    } catch (err) {
+      setError(true);
+      setErrorMsg("Failed to update Todo Status");
+      console.log(err.message);
+    } finally {
+      setIsLoading(false);
+      getAllTodos();
+    }
+  };
+
+  const deleteTodo = async () => {}
 
   useEffect(() => {
     getAllTodos();
@@ -84,6 +102,8 @@ export const DataProvider = ({ children }) => {
         getAllTodos,
         addNewTodo,
         changeTodoStatus,
+        editTodo,
+        deleteTodo,
 
         todoData,
         isLoading,

@@ -15,8 +15,14 @@ const TodoListItem = ({ todo }) => {
   };
 
   return (
-    <li className="todoListItem">
-      <div className="todoListItem__checkbox--wrapper">
+    <li className="TodoListItem">
+      <div
+        className={
+          todo.isComplete
+            ? `TodoListItem__checkbox--complete`
+            : `TodoListItem__checkbox--incomplete`
+        }
+      >
         <input
           type="checkbox"
           onChange={(e) => handleChangeStatus(e)}
@@ -24,12 +30,15 @@ const TodoListItem = ({ todo }) => {
           value={todo?.isComplete}
           id={todo?.id}
         />
+        <Icons name={todo.isComplete ? `Complete` : `Incomplete`} />
       </div>
 
-      <Link className="todoListItem__link--wrapper" to={`todo/${todo?.id}`}>
-        <h4 className="todoListItem__link--title">{todo?.title}</h4>
-        <p>{todo?.dateTime}</p>
-        <Icons className="todoListItem__link--icon" name="Link" />
+      <Link className="TodoListItem__link--wrapper" to={`todo/${todo?.id}`}>
+        <div>
+          <h4 className="TodoListItem__link--title">{todo?.title}</h4>
+          <p>{todo?.dateTime}</p>
+        </div>
+        <Icons className="TodoListItem__link--icon" name="Link" />
       </Link>
     </li>
   );

@@ -8,7 +8,10 @@
 
 @import "./components/AddNewTodo";
 
-@import "./routes/dashboard";
+@import "./features/TodoList";
+@import "./features/TodoListItem";
 
 @import "./layout/Footer";
 @import "./layout/Header";
+
+@import "./routes/Dashboard";

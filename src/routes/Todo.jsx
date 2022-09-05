@@ -15,7 +15,7 @@ const Todo = () => {
 
   const filterTodos = useCallback(() => {
     const todo = newData.filter((todo) => (todo.id === id ? 1 : 0));
-    return todo
+    return todo;
   }, [todoData]);
 
   const handleChangeStatus = (e) => {
@@ -32,6 +32,7 @@ const Todo = () => {
             <div className="todo__title">
               <h1>{todo?.title}</h1>
             </div>
+
             <div className="todo__status">
               <input
                 type="checkbox"
@@ -41,14 +42,17 @@ const Todo = () => {
               />
               <span>{todo?.isComplete ? `Complete` : `Incomplete`}</span>
             </div>
+
             <div className="todo__dateTime">
               <p>{todo?.dateTime}</p>
             </div>
+
             <div className="todo__description">
               <p>{todo?.description}</p>
             </div>
+
             <div className="todo__controls">
-              
+              <Link to={`/edit/${todo.id}`}>Edit</Link>
             </div>
           </Fragment>
         ))}
@@ -57,6 +61,3 @@ const Todo = () => {
   );
 };
 export default Todo;
-
-// {/* <EditLink to={`/edit/${todo.id}`}>Edit</EditLink> */}
-// {/* <DeleteButton id={todo.id} onClick={handleTodoDelete}>Delete</DeleteButton> */}

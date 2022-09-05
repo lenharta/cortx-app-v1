@@ -1,11 +1,29 @@
 @use "../utils/vars";
+@import "../base/functions";
 
 .AddNewTodo {
-  right: 2rem;
-  bottom: 2rem;
+  bottom: calc(vars.$grid-gutter * 0.25);
+  right: calc(vars.$grid-gutter * 0.25);
   position: fixed;
   height: 3rem;
   width: 3rem;
+
+  @include respond-to("SMALL") {
+    bottom: calc(vars.$grid-gutter * 0.5);
+    right: calc(vars.$grid-gutter * 0.5);
+  }
+  @include respond-to("MEDIUM") {
+    bottom: vars.$grid-gutter;
+    right: vars.$grid-gutter;
+  }
+  @include respond-to("LARGE") {
+    bottom: calc(vars.$grid-gutter * 1.5);
+    right: calc(vars.$grid-gutter * 1.5);
+  }
+  @include respond-to("XLARGE") {
+    bottom: calc(vars.$grid-gutter * 2);
+    right: calc(vars.$grid-gutter * 2);
+  }
 
   border-radius: 50%;
 

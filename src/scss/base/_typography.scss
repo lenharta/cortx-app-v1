@@ -1,5 +1,6 @@
 @use "../utils/vars";
-@use "../base/functions";
+@use "../utils/mixins";
+@import "./functions";
 
 p,
 span,
@@ -20,31 +21,80 @@ h4 {
 h1 {
   line-height: 1.4;
   font-size: 2.5rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: calc(vars.$spacing-unit * 1);
 
-  // @include respond-to("SMALL") {
-  // }
+  @include respond-to("SMALL") {
+  }
+  @include respond-to("MEDIUM") {
+  }
+  @include respond-to("LARGE") {
+  }
+  @include respond-to("XLARGE") {
+  }
+  @include respond-to("XXLARGE") {
+  }
 }
 h2 {
   font-size: 2.25em;
   line-height: 1.3;
-  margin-bottom: 0.6rem;
+  margin-bottom: calc(vars.$spacing-unit * 1);
 
-  // @include respond-to("SMALL") {
-  // }
+  @include respond-to("SMALL") {
+  }
+  @include respond-to("MEDIUM") {
+  }
+  @include respond-to("LARGE") {
+  }
+  @include respond-to("XLARGE") {
+  }
+  @include respond-to("XXLARGE") {
+  }
 }
 h3 {
   font-size: 2em;
   line-height: 1.2;
-  margin-bottom: 0.4rem;
+  margin-bottom: calc(vars.$spacing-unit * 1);
 
-  // @include respond-to("SMALL") {
-  // }
+  @include respond-to("SMALL") {
+  }
+  @include respond-to("MEDIUM") {
+  }
+  @include respond-to("LARGE") {
+  }
+  @include respond-to("XLARGE") {
+  }
+  @include respond-to("XXLARGE") {
+  }
 }
 h4 {
-  font-size: 1.75em;
+  font-size: 1.1em;
   line-height: 1.1;
+  margin-bottom: calc(vars.$spacing-unit * 0.75);
 
-  // @include respond-to("SMALL") {
-  // }
+  @include respond-to("SMALL") {
+  }
+  @include respond-to("MEDIUM") {
+  }
+  @include respond-to("LARGE") {
+  }
+  @include respond-to("XLARGE") {
+  }
+  @include respond-to("XXLARGE") {
+  }
+}
+
+p,
+span {
+  font-size: 1em;
+  @include respond-to("SMALL") {
+    font-size: 1.3em;
+  }
+  @include respond-to("MEDIUM") {
+  }
+  @include respond-to("LARGE") {
+  }
+  @include respond-to("XLARGE") {
+  }
+  @include respond-to("XXLARGE") {
+  }
 }

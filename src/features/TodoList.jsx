@@ -6,7 +6,7 @@ import TodoListItem from "./TodoListItem";
 
 const TodoList = () => {
   const { todoData } = useContext(DataCTX);
-  const [sortKey, setSortKey] = useState("all"); //
+  const [sortKey, setSortKey] = useState("all"); // all // incomplete // complete
   const [sortOrder, setSortOrder] = useState("newest"); // newest // oldest
 
   const filterAllTodos = useCallback(() => {
@@ -41,8 +41,8 @@ const TodoList = () => {
   };
 
   return (
-    <section className="todoList">
-      <header className="todoList__header">
+    <section className="TodoList">
+      <header className="TodoList__header">
         <h2>Todos</h2>
       </header>
 
@@ -73,7 +73,7 @@ const TodoList = () => {
         </button>
       </div>
 
-      <ul className="todoList__Table">
+      <ul className="TodoList__Data">
         {filterAllTodos().map((todo) => (
           <TodoListItem key={`todo-${todo?.id}`} todo={todo} />
         ))}

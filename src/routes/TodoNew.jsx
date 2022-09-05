@@ -29,7 +29,7 @@ const TodoNew = () => {
           <h1>Add A Todo</h1>
         </header>
 
-        <form action="" className="TodoNew__form" onSubmit={handleAddTodo}>
+        <form action="sumbitTodoNew" className="TodoNew__form" onSubmit={handleAddTodo}>
           <label htmlFor="" className="TodoNew__form--label">
             Title
           </label>
