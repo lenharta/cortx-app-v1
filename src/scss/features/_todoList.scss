@@ -1,4 +1,42 @@
+@use "../utils/vars" as vars;
+@use "../utils/mixins" as *;
+@use "../base/functions" as *;
+@use "../base/buttons" as *;
+@use "../base/typography" as *;
+
 .TodoList {
   @include grid--col-1;
-  // @include global--container;
+
+  &__controls {
+    @include grid--col-2;
+    gap: vars.$grid-gap;
+    margin-top: vars.$grid-gap;
+
+    @include respond-to("SMALL") {
+      @include grid--col-4;
+    }
+  }
+  &__controls_btn {
+    @include btn--primary;
+    &-all {
+      @include btn--primary;
+    }
+
+    &-incomplete {
+      @include btn--incomplete;
+    }
+    &-complete {
+      @include btn--complete;
+    }
+  }
+
+  &__data {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    max-width: 100%;
+    margin-top: vars.$grid-gap;
+    min-height: 75vh;
+  }
 }

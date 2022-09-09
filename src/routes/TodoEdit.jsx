@@ -1,9 +1,16 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import DataCTX from "../context/DataCTX";
 
 import { pageTransitionLeft } from "../utils/motionConfig";
-import { MotionRoute } from "../components";
+import {
+  InputDescription,
+  InputTitle,
+  MotionRoute,
+  RouteHeader,
+  SubmitButton,
+  TodoForm,
+} from "../components";
 import { useState } from "react";
 import { setTodaysDate } from "../utils/dateConfig";
 
@@ -16,6 +23,7 @@ const TodoEdit = () => {
   const navigate = useNavigate();
   const params = useParams();
   const id = params.todoId;
+  const prevRef = useRef();
 
   const fillEditDetails = () => {
     let todoObj = {};
@@ -24,6 +32,7 @@ const TodoEdit = () => {
       todoObj = todo[0];
     };
     findTodo();
+    prevRef.current = todoObj.title;
     setEditTitle(todoObj.title);
     setEditDescription(todoObj.description);
   };
@@ -51,6 +60,17 @@ const TodoEdit = () => {
     navigate("/");
   };
 
+
+  const handleDisabled = () => {
+    if (editTitle === prevRef.current) {
+      return true;
+    }
+    if (editTitle === "") {
+      return true;
+    }
+    return false;
+  }
+
   useEffect(() => {
     fillEditDetails();
   }, []);
@@ -58,40 +78,31 @@ const TodoEdit = () => {
   return (
     <section className="TodoEdit">
       <MotionRoute animation={pageTransitionLeft}>
-        <header className="TodoEdit__header">
-          <h1>Edit Todo</h1>
-        </header>
+        <RouteHeader title={`Edit Todo`} />
 
-        <form
-          action="submitTodoEdit"
-          className="TodoEdit__form"
-          onSubmit={handleSubmitEdit}
-        >
-          <label htmlFor="" className="TodoEdit__label">
-            Edit Title
-          </label>
-
-          <input
-            type="text"
-            className="TodoEdit__form--title"
+        <TodoForm onSubmit={handleSubmitEdit}>
+          <InputTitle
+            id={`EditTodoTitle`}
+            label={`Title`}
             value={editTitle}
             onChange={(e) => handleEditTitle(e)}
+            placeholder={`Enter a Title...`}
           />
 
-          <label htmlFor="" className="TodoEdit__label">
-            Edit Title
-          </label>
-
-          <textarea
-            className="TodoEdit__form--description"
+          <InputDescription
+            id={`EditTodoDescription`}
+            label={`Description`}
             value={editDescription}
             onChange={(e) => handleEditDescription(e)}
+            placeholder={`Enter a Description...`}
           />
 
-          <button type="submit" className="TodoEdit__form--btn">
-            Submit Edit
-          </button>
-        </form>
+          <SubmitButton
+            title={`Submit Edit`}
+            ariaLabel={`Submit To Do Edit`}
+            disabled={handleDisabled()}
+          />
+        </TodoForm>
       </MotionRoute>
     </section>
   );

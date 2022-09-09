@@ -1,0 +1,14 @@
+@use "../utils/vars" as vars;
+@use "./functions"  as *;
+
+@mixin link--default {
+  cursor: pointer;
+  text-decoration: none;
+
+  background-color: vars.$clr-secondary;
+  color: vars.$clr-txt-secondary;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

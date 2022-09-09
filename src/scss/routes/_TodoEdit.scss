@@ -2,14 +2,10 @@
 @use "../utils/mixins" as *;
 @use "../base/functions" as *;
 
-.Dashboard {
+.TodoEdit {
   @include global--container;
-  @include grid--col-1;
-
   margin-top: calc(vars.$header-height-mobile * 2);
   @include respond-to("LARGE") {
     margin-top: calc(vars.$header-height-desktop * 2);
   }
-  // &__header {
-  // }
 }

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
 export const FIREBASE_URL = "https://cortx-app-v1-default-rtdb.firebaseio.com";
@@ -10,6 +10,26 @@ export const DataProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [completeCount, setCompleteCount] = useState(0);
+  const [incompleteCount, setIncompleteCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
+
+  const setTodoCounts = useCallback(
+    (data) => {
+      const newData = [...data];
+
+      const setAllCounts = () => {
+        const iCR = newData.filter((todo) => todo.isComplete === false);
+        const cCR = newData.filter((todo) => todo.isComplete === true);
+        setTotalCount(newData.length);
+        setIncompleteCount(iCR.length);
+        setCompleteCount(cCR.length);
+      };
+
+      setAllCounts();
+    },
+    [todoData, incompleteCount, completeCount, totalCount]
+  );
 
   const getAllTodos = async () => {
     setIsLoading(true);
@@ -85,16 +105,40 @@ export const DataProvider = ({ children }) => {
       setErrorMsg("Failed to update Todo Status");
       console.log(err.message);
     } finally {
-      setIsLoading(false);
       getAllTodos();
+      setIsLoading(false);
     }
   };
 
-  const deleteTodo = async () => {}
+  const deleteTodo = async (todoId) => {
+    console.log(todoId);
+    setIsLoading(true);
+    try {
+      const res = axios.delete(`${FIREBASE_URL}/todos/${todoId}.json`);
+      console.log(res);
+      const newData = [...todoData];
+      const filterTodos = newData.filter((todo) => todo.id !== todoId);
+      setTodoData(filterTodos);
+    } catch (err) {
+      setError(true);
+      setErrorMsg("Failed to delete Todo");
+      console.log(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     getAllTodos();
   }, []);
+
+  useEffect(() => {
+    setTodoCounts(todoData);
+  }, [todoData]);
+
+  // console.log("totalCount", totalCount);
+  // console.log("completeCount", completeCount);
+  // console.log("incompleteCount", incompleteCount);
 
   return (
     <DataCTX.Provider
@@ -106,9 +150,12 @@ export const DataProvider = ({ children }) => {
         deleteTodo,
 
         todoData,
+        totalCount,
+        completeCount,
+        incompleteCount,
         isLoading,
-        error,
         errorMsg,
+        error,
       }}
     >
       {children}

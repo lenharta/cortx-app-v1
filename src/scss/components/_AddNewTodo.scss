@@ -1,5 +1,5 @@
-@use "../utils/vars";
-@import "../base/functions";
+@use "../utils/vars" as vars;
+@use "../base/functions" as *;
 
 .AddNewTodo {
   bottom: calc(vars.$grid-gutter * 0.25);
@@ -17,11 +17,9 @@
     right: vars.$grid-gutter;
   }
   @include respond-to("LARGE") {
-    bottom: calc(vars.$grid-gutter * 1.5);
     right: calc(vars.$grid-gutter * 1.5);
   }
   @include respond-to("XLARGE") {
-    bottom: calc(vars.$grid-gutter * 2);
     right: calc(vars.$grid-gutter * 2);
   }
 

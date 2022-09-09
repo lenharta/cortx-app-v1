@@ -1,0 +1,36 @@
+@use "../utils/vars" as vars;
+@use "../utils/mixins" as *;
+
+@use "../base/functions" as *;
+@use "../base/buttons" as *;
+@use "../base/typography" as *;
+
+.TodoForm {
+  @include grid--col-1;
+
+  &__input_label {
+    margin-top: vars.$grid-gap;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  &__input_title {
+    padding: vars.$grid-gap;
+    margin-top: vars.$grid-gap;
+    border-radius: 0.5rem;
+  }
+
+  &__input_description {
+    height: 10rem;
+    padding: vars.$grid-gap;
+    margin-top: vars.$grid-gap;
+    border-radius: 0.5rem;
+  }
+
+  &__btn_submit {
+    @include btn--primary;
+    margin-top: vars.$grid-gap;
+  }
+}

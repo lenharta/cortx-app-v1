@@ -1,5 +1,5 @@
-@use "./vars";
-@use "../base/functions";
+@use "./vars" as vars;
+@use "../base/functions" as *;
 
 @mixin flex--center {
   display: flex;
@@ -34,6 +34,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+@mixin grid--col-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
 @mixin grid--col-12 {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -43,67 +47,48 @@
 @mixin global--container {
   margin-left: auto;
   margin-right: auto;
-  padding-left: calc(vars.$grid-gutter * 0.25);
-  padding-right: calc(vars.$grid-gutter * 0.25);
   max-width: vars.$max-layout-width;
-
+  padding: 0 calc(vars.$spacing-unit * 2);
+  
   @include respond-to("SMALL") {
-    padding-left: calc(vars.$grid-gutter * 0.5);
-    padding-right: calc(vars.$grid-gutter * 0.5);
+    padding: 0 calc(vars.$spacing-unit * 3);
   }
   @include respond-to("MEDIUM") {
-    padding-left: vars.$grid-gutter;
-    padding-right: vars.$grid-gutter;
+    padding: 0 calc(vars.$spacing-unit * 4);
   }
   @include respond-to("LARGE") {
-    padding-left: calc(vars.$grid-gutter * 1.5);
-    padding-right: calc(vars.$grid-gutter * 1.5);
+    padding: 0 calc(vars.$spacing-unit * 6);
   }
   @include respond-to("XLARGE") {
-    padding-left: calc(vars.$grid-gutter * 2);
-    padding-right: calc(vars.$grid-gutter * 2);
+    padding: 0 calc(vars.$spacing-unit * 8);
   }
 }
 
 @mixin section--card-sm {
   background-color: vars.$clr-secondary;
   border-radius: calc(vars.$card-radius * 0.5);
-  padding-left: calc(vars.$spacing-unit * 2);
-  padding-right: calc(vars.$spacing-unit * 2);
-  padding-bottom: calc(vars.$spacing-unit * 2);
-  padding-top: calc(vars.$spacing-unit * 2);
+
+  padding: calc(vars.$spacing-unit * 2);
   margin-bottom: calc(vars.$spacing-unit * 1);
   margin-top: calc(vars.$spacing-unit * 1);
 
   @include respond-to("SMALL") {
-    padding-left: calc(vars.$spacing-unit * 1);
-    padding-right: calc(vars.$spacing-unit * 1);
-    padding-bottom: calc(vars.$spacing-unit * 1);
-    padding-top: calc(vars.$spacing-unit * 1);
+    padding: calc(vars.$spacing-unit * 2);
     margin-bottom: calc(vars.$spacing-unit * 1);
     margin-top: calc(vars.$spacing-unit * 1);
   }
   @include respond-to("MEDIUM") {
-    padding-left: calc(vars.$spacing-unit * 1);
-    padding-right: calc(vars.$spacing-unit * 1);
-    padding-bottom: calc(vars.$spacing-unit * 1);
-    padding-top: calc(vars.$spacing-unit * 1);
+    padding: calc(vars.$spacing-unit * 2);
     margin-bottom: calc(vars.$spacing-unit * 1);
     margin-top: calc(vars.$spacing-unit * 1);
   }
   @include respond-to("LARGE") {
-    padding-left: calc(vars.$spacing-unit * 1);
-    padding-right: calc(vars.$spacing-unit * 1);
-    padding-bottom: calc(vars.$spacing-unit * 1);
-    padding-top: calc(vars.$spacing-unit * 1);
+    padding: calc(vars.$spacing-unit * 2);
     margin-bottom: calc(vars.$spacing-unit * 1);
     margin-top: calc(vars.$spacing-unit * 1);
   }
   @include respond-to("XLARGE") {
-    padding-left: calc(vars.$spacing-unit * 1);
-    padding-right: calc(vars.$spacing-unit * 1);
-    padding-bottom: calc(vars.$spacing-unit * 1);
-    padding-top: calc(vars.$spacing-unit * 1);
+    padding: calc(vars.$spacing-unit * 2);
     margin-bottom: calc(vars.$spacing-unit * 1);
     margin-top: calc(vars.$spacing-unit * 1);
   }
@@ -113,7 +98,7 @@
   position: relative;
   height: 30px;
   width: 30px;
-  
+
   input {
     z-index: 2;
     cursor: pointer;

@@ -1,3 +1,5 @@
+@use "../utils/vars" as vars;
+@use "../utils/mixins" as *;
 
 .footer__container {
   @include global--container;

@@ -1,17 +1,26 @@
+@use "./base/reset";
+@use "./base/typography";
 
-@import "./base/reset";
-@import "./base/typography";
-@import "./base/functions";
+@use "./components/AddNewTodo";
+@use "./components/TodoForm";
+@use "./components/Checkbox";
+@use "./components/Clock";
+@use "./components/CounterBoard";
+@use "./components/Logo";
+@use "./components/PrimaryLink";
+@use "./components/DeleteButton";
+@use "./components/TodoDeleteModal";
 
-@import "./utils/vars";
-@import "./utils/mixins";
+@use "./features/TodoList";
+@use "./features/TodoListItem";
 
-@import "./components/AddNewTodo";
+@use "./layout/Footer";
+@use "./layout/Header";
+@use "./layout/SectionHeader";
+@use "./layout/RouteHeader";
 
-@import "./features/TodoList";
-@import "./features/TodoListItem";
-
-@import "./layout/Footer";
-@import "./layout/Header";
-
-@import "./routes/Dashboard";
+@use "./routes/NotFound";
+@use "./routes/Dashboard";
+@use "./routes/TodoNew";
+@use "./routes/TodoEdit";
+@use "./routes/Todo";

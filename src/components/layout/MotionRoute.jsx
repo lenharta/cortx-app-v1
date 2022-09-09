@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
-const MotionRoute = ({ variants, children }) => {
+const MotionRoute = ({ animation, children }) => {
   return (
-    <motion.div variants={variants} initial="hidden" animate="show">
+    <motion.div variants={animation} initial="hidden" animate="show">
       {children}
     </motion.div>
   );

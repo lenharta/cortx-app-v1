@@ -1,0 +1,33 @@
+OBJECTIVES
+
+Form Component Folder
+  Form
+  - children
+  - onSubmit
+  includes {{
+    - InputLabel
+    - InputTitle
+    - InputDescription
+    - ButtonSubmit
+  }}
+
+
+Make HOC Components for each input
+- Checkbox []
+- InputLabel []
+  - htmlfor
+  - title
+- InputTitle []
+  - value
+  - onchange
+  - required
+  - placeholder
+  - autofocus
+  includes {{
+    - InputLabel
+  }}
+- InputDescription []
+- ButtonSubmit []
+  - 
+
+Make HOC Components for each button

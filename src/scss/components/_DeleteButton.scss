@@ -1,0 +1,21 @@
+@use "../utils/vars" as vars;
+@use "../utils/mixins" as *;
+@use "../base/functions" as *;
+@use "../base/buttons" as *;
+
+.DeleteButton {
+  @include flex--start;
+  border: solid 2px;
+  border-radius: 0.5rem;
+  padding: calc(vars.$spacing-unit * 1.5);
+  color: vars.$clr-acc-red;
+  background-color: vars.$clr-secondary;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  svg {
+    margin-right: vars.$grid-gap;
+  }
+}

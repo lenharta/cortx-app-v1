@@ -1,0 +1,8 @@
+@use "../utils/vars" as vars;
+@use "../base/typography" as *;
+
+.SectionHeader {
+  &__title {
+    @include route--section-headline;
+  }
+}

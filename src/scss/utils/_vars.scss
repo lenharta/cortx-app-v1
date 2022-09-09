@@ -1,44 +1,40 @@
 @font-face {
   font-display: swap;
-  font-family: "Open Sans", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
-  font-weight: 400;
-}
-@font-face {
-  font-display: swap;
-  font-family: "Ubuntu", sans-serif;
-  src: url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap");
-  font-weight: 700;
+  font-family: "DM Sans", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+  font-weight: 400 700;
 }
 
 $clr-base: #000000;
 $clr-primary: #141316;
-$clr-secondary: #1F2027;
+$clr-secondary: #1f2027;
 
 $clr-gray-08: rgba(142, 147, 159, 0.8);
 $clr-gray-06: rgba(142, 147, 159, 0.6);
 $clr-gray-04: rgba(142, 147, 159, 0.4);
 
-$clr-acc-green: #49D078;
-$clr-acc-blue: #2663FF;
-$clr-acc-red: #FA0369;
+$clr-acc-green: #49d078;
+$clr-acc-blue: #2663ff;
+$clr-acc-red: #fa0341;
 
-$clr-txt-primary: #FFFFFF;
-$clr-txt-secondary: #6A7183;
+$clr-txt-primary: #ffffff;
+$clr-txt-secondary: $clr-gray-08;
 
-$clr-selection-bg: #FFFFFF;
-$clr-selection-txt: #10151C;
+$clr-selection-bg: #ffffff;
+$clr-selection-txt: #10151c;
 
-$font-secondary: "Ubuntu", sans-serif;
+$font-secondary: "DM Sans", sans-serif;
 $font-w-secondary: 700;
-$font-primary: "Open Sans", sans-serif;
+$font-primary: "DM Sans", sans-serif;
 $font-w-primary: 400;
 
-
-$header-height-mobile: 5rem;
+$header-height-mobile: 4.5rem;
 $header-height-desktop: 5rem;
 $max-layout-width: 1440px;
 $spacing-unit: 0.5rem;
+$section-spacing: 3.75rem;
 $grid-gutter: 3.75rem;
+$grid-gap: 1rem;
 $card-radius: 1rem;
 $border: solid 2px;
+$box-shadow: 0 5px 12px 0 rgba(89, 89, 89, 0.2);

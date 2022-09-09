@@ -1,0 +1,49 @@
+@use "../utils/vars" as vars;
+@use "./functions"  as *;
+
+@mixin btn--default {
+  border: none;
+  cursor: pointer;
+
+  border: solid 2px;
+  border-radius: 0.5rem;
+  padding: calc(vars.$spacing-unit * 1.5) 0;
+
+  &:hover {
+    opacity: 0.8;
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+@mixin btn--primary {
+  @include btn--default;
+  border-color: vars.$clr-txt-secondary;
+  background-color: vars.$clr-secondary;
+  color: vars.$clr-txt-secondary;
+}
+@mixin btn--warn {
+  @include btn--default;
+  border-color: vars.$clr-acc-red;
+  background-color: vars.$clr-secondary;
+  color: vars.$clr-acc-red;
+}
+@mixin btn--success {
+  @include btn--default;
+  border-color: vars.$clr-acc-green;
+  background-color: vars.$clr-secondary;
+  color: vars.$clr-acc-green;
+}
+@mixin btn--complete {
+  @include btn--default;
+  border-color: vars.$clr-acc-green;
+  background-color: vars.$clr-secondary;
+  color: vars.$clr-acc-green;
+}
+@mixin btn--incomplete {
+  @include btn--default;
+  border-color: vars.$clr-acc-blue;
+  background-color: vars.$clr-secondary;
+  color: vars.$clr-acc-blue;
+}

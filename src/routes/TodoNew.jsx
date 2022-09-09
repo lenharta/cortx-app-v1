@@ -1,16 +1,21 @@
-import { MotionRoute } from "../components";
-import { pageTransitionLeft } from "../utils/motionConfig";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useContext } from "react";
-import DataCTX from "../context/DataCTX";
 import { setTodaysDate } from "../utils/dateConfig";
+import { pageTransitionLeft, pageTransitionRight } from "../utils/motionConfig";
+import DataCTX from "../context/DataCTX";
+import {
+  InputDescription,
+  InputTitle,
+  MotionRoute,
+  SubmitButton,
+  TodoForm,
+} from "../components";
 
 const TodoNew = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const navigate = useNavigate();
   const { addNewTodo } = useContext(DataCTX);
+  const navigate = useNavigate();
 
   const handleAddTodo = () => {
     const dateTime = setTodaysDate();
@@ -24,39 +29,34 @@ const TodoNew = () => {
 
   return (
     <section className="TodoNew">
-      <MotionRoute animation={pageTransitionLeft}>
+      <MotionRoute animation={pageTransitionRight}>
         <header className="TodoNew__header">
-          <h1>Add A Todo</h1>
+          <h1>Add Todo</h1>
         </header>
 
-        <form action="sumbitTodoNew" className="TodoNew__form" onSubmit={handleAddTodo}>
-          <label htmlFor="" className="TodoNew__form--label">
-            Title
-          </label>
-          <input
-            type="text"
-            className="TodoNew__form--input_title"
-            placeholder="Enter a title..."
-            required
+        <TodoForm onSubmit={handleAddTodo}>
+          <InputTitle
+            id={`addTodoTitle`}
+            label={`Title`}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            placeholder={`Enter a Title...`}
           />
 
-          <label htmlFor="" className="TodoNew__form--label">
-            Description
-          </label>
-          <input
-            type="text"
-            className="TodoNew__form--input_description"
-            placeholder="Enter a description..."
+          <InputDescription
+            id={`addTodoDescription`}
+            label={`Description`}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            placeholder={`Enter a Description...`}
           />
 
-          <button type="submit" className="TodoNew__form--btn">
-            Add Todo
-          </button>
-        </form>
+          <SubmitButton
+            title={`Submit Todo`}
+            ariaLabel={`Submit To Do`}
+            disabled={title === "" ? 1 : 0}
+          />
+        </TodoForm>
       </MotionRoute>
     </section>
   );

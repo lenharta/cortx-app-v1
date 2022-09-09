@@ -1,0 +1,146 @@
+@use "../utils/mixins" as *;
+@use "../utils/vars" as vars;
+@use "../base/functions" as *;
+
+.CounterBoard {
+  @include grid--col-1;
+  margin-bottom: calc(vars.$section-spacing * 0.5);
+
+  @include respond-to("SMALL") {
+    margin-bottom: calc(vars.$section-spacing * 0.75);
+    @include grid--col-3;
+    gap: vars.$grid-gap;
+  }
+  @include respond-to("LARGE") {
+    margin-bottom: vars.$section-spacing;
+  }
+}
+
+@mixin counter--card-def {
+  @include section--card-sm;
+  display: grid;
+  grid-template-areas: "a a a a a b";
+
+  @include respond-to("SMALL") {
+    grid-template-areas:
+      "a a a a a a"
+      "b b b b b b";
+    gap: vars.$grid-gap;
+  }
+
+  div:nth-of-type(1) {
+    grid-area: a;
+    display: flex;
+
+    svg {
+      margin-right: vars.$grid-gap;
+      height: 35px;
+      width: 35px;
+    }
+    h2 {
+      margin-bottom: 0;
+      font-size: 1.6em;
+    }
+  }
+
+  div:nth-of-type(2) {
+    grid-area: b;
+
+    h3 {
+      width: 100%;
+      text-align: right;
+      font-size: 2em;
+      margin-bottom: 0;
+      justify-items: end;
+      @include respond-to("SMALL") {
+        font-size: 4em;
+        text-align: left;
+      }
+    }
+  }
+}
+
+.CounterCard__Incomplete {
+  @include counter--card-def;
+  h2,
+  h3,
+  svg {
+    color: vars.$clr-acc-blue;
+  }
+}
+.CounterCard__Complete {
+  @include counter--card-def;
+  h2,
+  h3,
+  svg {
+    color: vars.$clr-acc-green;
+  }
+}
+.CounterCard__Total {
+  @include counter--card-def;
+  h2,
+  h3,
+  svg {
+    color: vars.$clr-txt-secondary;
+  }
+}
+
+// .CounterCard {
+//   @include section--card-sm;
+
+//   h3 {
+//     font-size: 3em;
+//     margin-bottom: 0;
+//     text-align: right;
+//     color: vars.$clr-txt-secondary;
+//   }
+
+//   &__header {
+//     @include flex--start;
+//     margin-bottom: vars.$grid-gap;
+
+//     &-complete {
+//       @include flex--start;
+//       margin-bottom: vars.$grid-gap;
+//       h2 {
+//         margin-bottom: 0;
+//         font-size: 1.6em;
+//         color: vars.$clr-acc-green;
+//       }
+//       svg {
+//         color: vars.$clr-acc-green;
+//         margin-right: vars.$grid-gap;
+//         height: 35px;
+//         width: 35px;
+//       }
+//     }
+
+//     &-incomplete {
+//       @include flex--start;
+//       margin-bottom: vars.$grid-gap;
+//       h2 {
+//         margin-bottom: 0;
+//         font-size: 1.6em;
+//         color: vars.$clr-acc-blue;
+//       }
+//       svg {
+//         color: vars.$clr-acc-blue;
+//         margin-right: vars.$grid-gap;
+//         height: 35px;
+//         width: 35px;
+//       }
+//     }
+
+//     h2 {
+//       margin-bottom: 0;
+//       font-size: 1.6em;
+//       color: vars.$clr-txt-secondary;
+//     }
+
+//     svg {
+//       margin-right: vars.$grid-gap;
+//       height: 35px;
+//       width: 35px;
+//     }
+//   }
+// }

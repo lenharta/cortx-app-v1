@@ -1,0 +1,26 @@
+@use "../utils/mixins" as *;
+@use "../utils/vars" as vars;
+@use "../base/functions" as *;
+.Clock {
+  @include flex--start;
+  @include section--card-sm;
+
+  svg {
+    margin-right: vars.$grid-gap;
+    height: 35px;
+    width: 35px;
+  }
+  
+  &__date {
+    font-size: 1em;
+    margin-bottom: 0;
+    color: vars.$clr-txt-secondary;
+
+    @include respond-to("SMALL") {
+      font-size: 1.4em;
+    }
+    @include respond-to("LARGE") {
+      font-size: 1.6em;
+    }
+  }
+}

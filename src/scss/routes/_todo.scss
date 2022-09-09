@@ -1,0 +1,121 @@
+@use "../utils/vars" as vars;
+@use "../utils/mixins" as *;
+@use "../base/functions" as *;
+
+@mixin todo--title {
+  @include flex--start;
+  @include section--card-sm;
+
+  h2 {
+    margin-bottom: 0;
+    font-size: 1.3em;
+  
+    @include respond-to("SMALL") {
+      font-size: 1.4em;
+    }
+    @include respond-to("LARGE") {
+      font-size: 1.5em;
+    }
+  }
+}
+
+@mixin todo--status {
+  @include flex--start;
+  @include section--card-sm;
+  margin-top: vars.$grid-gap;
+
+  span {
+    font-size: 1.1em;
+  
+    @include respond-to("SMALL") {
+      font-size: 1.3em;
+    }
+    @include respond-to("LARGE") {
+      font-size: 1.4em;
+    }
+  }
+}
+
+.Todo {
+  @include grid--col-1;
+  @include global--container;
+
+  width: 100vw;
+  gap: vars.$grid-gap;
+  min-height: calc(100vh - calc(vars.$header-height-mobile * 2));
+  margin-top: calc(vars.$header-height-mobile * 2);
+
+  @include respond-to("LARGE") {
+    min-height: calc(100vh - calc(vars.$header-height-desktop * 2));
+    margin-top: calc(vars.$header-height-desktop * 2);
+  }
+
+  &__title_Complete {
+    @include todo--title;
+
+    h2 {
+      color: vars.$clr-acc-green;
+    }
+  }
+  &__title_Incomplete {
+    @include todo--title;
+
+    h2 {
+      color: vars.$clr-acc-blue;
+    }
+  }
+
+  &__status_Complete {
+    color: vars.$clr-acc-green;
+    @include todo--status;
+  }
+  &__status_Incomplete {
+    @include todo--status;
+    color: vars.$clr-acc-blue;
+  }
+
+  &__date {
+    @include flex--start;
+    @include section--card-sm;
+    margin-top: vars.$grid-gap;
+
+    svg {
+      margin-right: vars.$grid-gap;
+      height: 35px;
+      width: 35px;
+    }
+
+    h3 {
+      margin-bottom: 0;
+      color: vars.$clr-txt-secondary;
+      font-size: 1.1em;
+
+      @include respond-to("SMALL") {
+        font-size: 1.3em;
+      }
+      @include respond-to("LARGE") {
+        font-size: 1.4em;
+      }
+    }
+  }
+
+  &__description {
+    @include flex--start;
+    @include section--card-sm;
+    margin-top: vars.$grid-gap;
+    font-size: 1.1em;
+  
+    @include respond-to("SMALL") {
+      font-size: 1.3em;
+    }
+    @include respond-to("LARGE") {
+      font-size: 1.4em;
+    }
+  }
+
+  &__controls {
+    @include grid--col-2;
+    gap: vars.$grid-gap;
+    margin-top: vars.$grid-gap;
+  }
+}

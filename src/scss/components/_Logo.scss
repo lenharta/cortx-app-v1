@@ -1,0 +1,16 @@
+@use "../utils/vars" as vars;
+@use "../utils/mixins" as *;
+@use "../base/links" as *;
+
+.Logo {
+  @include link--default;
+  background: transparent;
+  font-size: 2.25em;
+  
+  &__Title {
+    color: vars.$clr-acc-blue;
+    strong {
+      color: vars.$clr-acc-green;
+    }
+  }
+}

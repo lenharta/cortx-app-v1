@@ -1,30 +1,81 @@
-@use "../utils/vars";
+@use "../utils/vars" as vars;
+@use "../utils/mixins" as *;
+
+@use "../base/functions" as *;
+@use "../base/typography" as *;
 
 .TodoListItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: vars.$clr-secondary;
   @include section--card-sm;
-  @include flex--start;
 
-  &__checkbox--complete {
-    width: 10%;
-    margin-right: calc(vars.$spacing-unit * 2);
-    @include flex--center;
-    @include input--checkbox-complete;
-  }
-
-  &__checkbox--incomplete {
-    width: 10%;
-    margin-right: calc(vars.$spacing-unit * 2);
-    @include flex--center;
-    @include input--checkbox-incomplete;
-  }
-
-  &__link--wrapper {
-    width: 90%;
+  &__link {
+    width: 100%;
     @include flex--between;
 
-    svg {
-      height: 20px;
-      width: 20px;
+    &_content {
+      width: 100%;
+    }
+
+    &_title-complete {
+      @include list--headline;
+
+      width: 15rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: vars.$clr-acc-green;
+
+      @include respond-to ("SMALL") {
+        width: 30rem;
+      }
+      @include respond-to ("MEDIUM") {
+        width: 40rem;
+      }
+      @include respond-to ("LARGE") {
+        width: 55rem;
+      }
+    }
+
+    &_title-incomplete {
+      @include list--headline;
+
+      width: 15rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: vars.$clr-acc-blue;
+
+      @include respond-to ("SMALL") {
+        width: 30rem;
+      }
+      @include respond-to ("MEDIUM") {
+        width: 40rem;
+      }
+      @include respond-to ("LARGE") {
+        width: 55rem;
+      }
+    }
+
+    &_date {
+      @include list--date;
+
+      color: vars.$clr-txt-secondary;
+    }
+    &_icon {
+      width: 10%;
+      display: flex;
+      justify-content: flex-end;
+      // width: 30px;
+      height: 30px;
+      
+      svg {
+        justify-self: flex-end;
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }

@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import Logo from "../links/Logo";
 
 const Header = () => {
   return (
-    <section className="header__container">
-      {/* <h1>Header</h1> */}
-    </section>
+    <header className="Header">
+      <nav className="Header__nav">
+        <Logo />
+      </nav>
+    </header>
   );
 };
 export default Header;

@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
+import { ControlButton, SectionHeader } from "../components";
 import DataCTX from "../context/DataCTX";
 import TodoListItem from "./TodoListItem";
 
@@ -42,38 +43,32 @@ const TodoList = () => {
 
   return (
     <section className="TodoList">
-      <header className="TodoList__header">
-        <h2>Todos</h2>
-      </header>
+      <SectionHeader title={`Todos`} />
 
-      <div className="controls">
-        <button className="controls__order" onClick={handleChangeOrder}>
-          {sortOrder.charAt(0).toLocaleUpperCase() + sortOrder.slice(1)}
-        </button>
-        <button
-          className="controls__all"
-          value="all"
+      <div className="TodoList__controls">
+        <ControlButton
+          value={`all`}
+          onClick={handleChangeOrder}
+          title={sortOrder.charAt(0).toLocaleUpperCase() + sortOrder.slice(1)}
+        />
+        <ControlButton
+          value={`all`}
           onClick={(e) => handleChangeSortKey(e)}
-        >
-          All
-        </button>
-        <button
-          className="controls__incomplete"
-          value="incomplete"
+          title={`All`}
+        />
+        <ControlButton
+          value={`incomplete`}
           onClick={(e) => handleChangeSortKey(e)}
-        >
-          Incomplete
-        </button>
-        <button
-          className="controls__complete"
-          value="complete"
+          title={`Incomplete`}
+        />
+        <ControlButton
+          value={`complete`}
           onClick={(e) => handleChangeSortKey(e)}
-        >
-          Complete
-        </button>
+          title={`Complete`}
+        />
       </div>
 
-      <ul className="TodoList__Data">
+      <ul className="TodoList__data">
         {filterAllTodos().map((todo) => (
           <TodoListItem key={`todo-${todo?.id}`} todo={todo} />
         ))}

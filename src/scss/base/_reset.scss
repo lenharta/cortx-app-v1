@@ -1,5 +1,5 @@
-@use "../utils/vars";
-@import "./functions";
+@use "../utils/vars" as vars;
+@use "./functions" as *;
 
 *,
 *::before,
@@ -28,22 +28,28 @@ html {
   color: vars.$clr-txt-secondary;
   font-size: 16px;
 }
+
 body {
   height: 100%;
   display: block;
   background-color: vars.$clr-base;
   color: vars.$clr-txt-secondary;
 }
+
 main {
   height: 100%;
   display: block;
+  max-width: 100%;
   position: relative;
+  overflow-x: hidden;
 }
+
 section,
 article,
 div {
   display: block;
 }
+
 ul,
 ol,
 li {
@@ -52,60 +58,16 @@ li {
 }
 
 a {
-  cursor: pointer;
   text-decoration: none;
-
-  font-size: 1em;
-  font-family: vars.$font-primary;
-  font-weight: vars.$font-w-primary;
-  color: vars.$clr-txt-secondary;
-
-  @include respond-to("SMALL") {
-    font-size: 1.1em;
-  }
-}
-
-button {
-  border: none;
-  cursor: pointer;
-  font-size: 1em;
-  font-family: vars.$font-primary;
-  font-weight: vars.$font-w-primary;
-  background-color: vars.$clr-secondary;
-  color: vars.$clr-txt-secondary;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  @include respond-to("SMALL") {
-    font-size: 1.1em;
-  }
 }
 
 input[type="text"] {
   border: none;
-  font-size: 1em;
-  font-family: vars.$font-primary;
-  font-weight: vars.$font-w-primary;
-  background-color: vars.$clr-secondary;
-  color: vars.$clr-txt-secondary;
-
-  @include respond-to("SMALL") {
-    font-size: 1.1em;
-  }
 }
 
 textarea {
   resize: none;
   border: none;
-  font-size: 1em;
-  font-family: vars.$font-primary;
-  font-weight: vars.$font-w-primary;
-  background-color: vars.$clr-secondary;
-  color: vars.$clr-txt-secondary;
-
-  @include respond-to("SMALL") {
-    font-size: 1.1em;
-  }
 }
+
+

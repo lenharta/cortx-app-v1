@@ -1,0 +1,54 @@
+@use "../utils/vars" as vars;
+@use "../utils/mixins" as *;
+@use "../base/functions" as *;
+
+.Checkbox {
+  @include flex--center;
+  margin-right: calc(vars.$spacing-unit * 2);
+  position: relative;
+  height: 35px;
+  width: 35px;
+
+  &__input {
+    position: absolute;
+    cursor: pointer;
+    height: 35px;
+    width: 35px;
+    opacity: 0;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+
+  div {
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+  }
+
+  &__complete {
+    @include flex--center;
+
+    svg {
+      width: 35px;
+      height: 35px;
+      color: vars.$clr-acc-green;
+    }
+  }
+  &__incomplete {
+    @include flex--center;
+    
+    svg {
+      width: 35px;
+      height: 35px;
+      color: vars.$clr-acc-blue;
+    }
+  }
+}

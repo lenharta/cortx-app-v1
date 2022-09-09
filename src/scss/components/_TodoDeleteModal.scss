@@ -1,0 +1,104 @@
+@use "../utils/vars" as vars;
+@use "../utils/mixins" as *;
+@use "../base/functions" as *;
+
+@mixin ModalBtn--def {
+  @include flex--start;
+  border: solid 2px;
+  border-radius: 0.5rem;
+  padding: calc(vars.$spacing-unit * 1.5);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  svg {
+    margin-right: vars.$grid-gap;
+  }
+}
+
+.TodoDeleteModal {
+  @include grid--col-1;
+  @include global--container;
+  place-items: center;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 50;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+
+  @supports (backdrop-filter: blur(7.5px)) {
+    backdrop-filter: blur(7.5px);
+  }
+  @supports not (backdrop-filter: blur(7.5px)) {
+    background-color: vars.$clr-secondary;
+  }
+
+  &__wrapper {
+    @include flex--center;
+    width: min(50rem, 100%);
+    background-color: vars.$clr-acc-red;
+    border-radius: 0.5rem;
+    padding: 5px;
+  }
+
+  &__message {
+    @include flex--center;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    
+    background-color: vars.$clr-secondary;
+    color: vars.$clr-acc-red;
+
+    border-radius: 0.5rem;
+    gap: vars.$grid-gap;
+    margin-bottom: 0px;
+    margin-top: 0px;
+
+    @include respond-to("SMALL") {
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+    @include respond-to("MEDIUM") {
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+    @include respond-to("LARGE") {
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+    @include respond-to("XLARGE") {
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+
+    &_title {
+      margin-bottom: 0;
+      font-size: 1.4em;
+      color: vars.$clr-acc-red;
+    }
+    &_btns {
+      @include grid--col-2;
+      gap: vars.$grid-gap;
+      width: 100%;
+      
+      button {
+        @include ModalBtn--def;
+        background: transparent;
+        width: 100%;
+      }
+      
+      &-cancel {
+        color: vars.$clr-txt-secondary;
+      }
+      &-delete {
+        color: vars.$clr-acc-red;
+      }
+    }
+  }
+}

@@ -1,4 +1,41 @@
+@use "../utils/vars" as vars;
+@use "../utils/mixins" as *;
+@use "../base/functions" as *;
 
-.header__container {
-  @include global--container;
+.Header {
+  position: fixed;
+  z-index: 100;
+  right: 0;
+  left: 0;
+  top: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 99;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+
+    @supports (backdrop-filter: blur(7.5px)) {
+      backdrop-filter: blur(7.5px);
+    }
+    @supports not (backdrop-filter: blur(7.5px)) {
+      background-color: vars.$clr-secondary;
+    }
+  }
+
+  &__nav {
+    @include flex--start;
+    @include global--container;
+    height: vars.$header-height-mobile;
+    position: relative;
+    z-index: 101;
+    top: 0;
+
+    @include respond-to("LARGE") {
+      height: vars.$header-height-desktop;
+    }
+  }
 }
