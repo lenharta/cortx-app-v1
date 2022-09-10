@@ -9,7 +9,6 @@ import {
   Todo,
   TodoEdit,
   NotFound,
-  TodoDeleteModal,
 } from "./routes";
 import "./scss/_index.scss";
 

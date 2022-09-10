@@ -1,7 +1,6 @@
 {
   "name": "cortx-app-v1",
   "version": "0.1.0",
-  "homepage": "https://lenharta.github.io/cortx-app-v1/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
@@ -47,7 +46,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0",
     "install": "^0.13.0",
     "npm": "^8.19.1"
   }
